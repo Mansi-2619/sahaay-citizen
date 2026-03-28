@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import BASE from '../config';
 const severityConfig = {
   High:   { color: '#ef4444', bg: 'rgba(239,68,68,.06)', border: 'rgba(239,68,68,.2)', glow: 'rgba(239,68,68,.15)', tag: '#ef4444', icon: '🔴', pulse: true },
   Medium: { color: '#f59e0b', bg: 'rgba(245,158,11,.06)', border: 'rgba(245,158,11,.2)', glow: 'rgba(245,158,11,.1)', tag: '#f59e0b', icon: '🟡', pulse: false },
@@ -17,7 +17,7 @@ export default function Alerts() {
 
   useEffect(() => {
     const fetchAlerts = () => {
-      axios.get('http://localhost:8000/alerts')
+      axios.get(`${BASE}/alerts`)
         .then(res => { setAlerts(res.data); setLoading(false) })
         .catch(() => setLoading(false))
     }

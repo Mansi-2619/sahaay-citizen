@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import BASE from '../config';
 const CITIES = ['Delhi', 'Mumbai', 'Chennai', 'Kolkata', 'Bengaluru', 'Hyderabad', 'Pune', 'Ahmedabad']
 
 const riskConfig = {
@@ -18,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     setLoading(true)
-    axios.get(`http://localhost:8000/predict/${city}`)
+    axios.get(`${BASE}/predict/${city}`)
       .then(res => { setRisk(res.data.risk); setWeather(res.data.weather); setLoading(false) })
       .catch(() => setLoading(false))
   }, [city])

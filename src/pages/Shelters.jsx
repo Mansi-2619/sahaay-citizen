@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import BASE from '../config';
 export default function Shelters() {
   const [shelters, setShelters] = useState([])
   const [loading, setLoading] = useState(true)
@@ -8,7 +8,7 @@ export default function Shelters() {
   const [selected, setSelected] = useState(null)
 
   useEffect(() => {
-    axios.get('http://localhost:8000/shelters')
+    axios.get(`${BASE}/shelters`)
       .then(res => { setShelters(res.data); setLoading(false) })
       .catch(() => setLoading(false))
   }, [])

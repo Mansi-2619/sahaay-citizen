@@ -1,8 +1,7 @@
 import { useState, useRef } from 'react'
 import axios from 'axios'
 
-const BASE = 'http://localhost:8000'
-
+import BASE from '../config';
 export default function SOS() {
   const [step, setStep]               = useState('form')   // form → holding → sent
   const [status, setStatus]           = useState('')
